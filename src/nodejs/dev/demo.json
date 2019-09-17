@@ -1,0 +1,25 @@
+{
+  "scenes": [
+    {
+      "id": "1",
+      "sceneName": "Demo Scene",
+      "topText": "foo",
+      "imageFile": "meme-image",
+      "bottomText": "bar",
+      "choices": [
+        {
+          "text": "foo",
+          "nextScene": "scene-a"
+        },
+        {
+          "text": "bar",
+          "nextScene": "scene-b"
+        },
+        {
+          "text": "baz",
+          "nextScene": "scene-c"
+        }
+      ]
+    }
+  ]
+}

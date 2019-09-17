@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FrameForm from './client/components/FrameForm';
+// import TopNavBar from './client/components/TopNavBar';
 
 function App() {
   return (
     <div className="App">
+      {/* <TopNavBar/> */}
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="App-h1">Cheddar</h1>
+        <p className="App-p">Choose Your Own Adventure Editor</p>
       </header>
+      <FrameForm />
     </div>
   );
 }
