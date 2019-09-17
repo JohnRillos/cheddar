@@ -7,9 +7,9 @@ import {
   FieldArray
 } from 'formik';
 import FormActionHandler from '../../modules/FormActionHandler';
-// import Loader from '../Loader';
 import SimpleButton from '../SimpleButton';
 import './styles.css';
+import { saveFile } from '../../modules/FileHandler';
 
 const buildField = (displayName, fieldName, isTextArea) => (
   <div className="namedField">
@@ -30,23 +30,20 @@ const buildChoice = (arrayHelpers, index, arrayName) => (
 )
 
 const buildChoiceArray = () => (
-  // <div className="fieldArray">
-    <FieldArray
-      name="choices"
-      render={arrayHelpers => (
-        <div>
-          <div className="choicesSectionHeader">
-            <div>Choices</div>
-            <SimpleButton onClick={() => arrayHelpers.push({ text: '', nextScene: '' })} text="+" />
-          </div>
-          {(arrayHelpers.form.values.choices || []).map((field, index) => (
-            buildChoice(arrayHelpers, index, "choices")
-          ))}
+  <FieldArray
+    name="choices"
+    render={arrayHelpers => (
+      <div>
+        <div className="choicesSectionHeader">
+          <div>Choices</div>
+          <SimpleButton onClick={() => arrayHelpers.push({ text: '', nextScene: '' })} text="+" />
         </div>
-      )}
-    />
-    // <br />
-  // </div>
+        {(arrayHelpers.form.values.choices || []).map((field, index) => (
+          buildChoice(arrayHelpers, index, "choices")
+        ))}
+      </div>
+    )}
+  />
 )
 
 class FrameForm extends Component {
@@ -103,6 +100,10 @@ class FrameForm extends Component {
               </div>
             </div>
             <SimpleButton styles="big" type="submit" disabled={isSubmitting} text="Submit" />
+            <SimpleButton
+              onClick={() => saveFile("cyoa.json", "formInput")}
+              text="Export to File"
+            />
           </Form>
         )}
       </Formik>
