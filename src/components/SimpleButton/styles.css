@@ -8,17 +8,20 @@
   background-color:rgb(0, 119, 255);
   color: white;
   font-size: 10;
-  font-weight: bold;
   /* margin: 4px; */
   /* margin-left: 4px; */
   min-height: 18px;
   min-width: 18px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .big {
   /* min-height: 40px; */
   font-size: 1.5rem;
-  font-weight: normal;
+  /* font-weight: normal; */
 }
 
 .red {

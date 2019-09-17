@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import FrameForm from './client/components/FrameForm';
+import FrameForm from './components/FrameForm';
 // import TopNavBar from './client/components/TopNavBar';
 
 function App() {
