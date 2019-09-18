@@ -99,11 +99,14 @@ class FrameForm extends Component {
                 {buildChoiceArray()}
               </div>
             </div>
-            <SimpleButton styles="big" type="submit" disabled={isSubmitting} text="Submit" />
-            <SimpleButton
-              onClick={() => saveFile("cyoa.json", "formInput")}
-              text="Export to File"
-            />
+            <div className="row-right">
+              <SimpleButton styles="big" type="submit" disabled={isSubmitting} text="Submit" />
+              <SimpleButton
+                styles="big"
+                onClick={() => saveFile("cyoa.json", "formInput")}
+                text="Export"
+              />
+            </div>
           </Form>
         )}
       </Formik>
