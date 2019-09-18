@@ -19,7 +19,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://johnrillos.github.io/cheddar",
+  "homepage": "https://johnrillos.com/cheddar",
   "eslintConfig": {
     "extends": "react-app"
   },
