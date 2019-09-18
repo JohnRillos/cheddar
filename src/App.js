@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import FrameForm from './components/FrameForm';
-// import TopNavBar from './client/components/TopNavBar';
+// import TopNavBar from './components/TopNavBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <p className="App-p">Choose Your Own Adventure Editor</p>
       </header>
       <FrameForm />
+      <Footer/>
     </div>
   );
 }
