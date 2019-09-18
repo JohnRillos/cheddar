@@ -1,10 +1,11 @@
 {
   "name": "cheddar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "file-saver": "^2.0.2",
     "formik": "^1.5.8",
+    "gh-pages": "^2.1.1",
     "local-storage": "^2.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -14,8 +15,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://johnrillos.github.io/cheddar",
   "eslintConfig": {
     "extends": "react-app"
   },
