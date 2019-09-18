@@ -1,6 +1,6 @@
 {
   "name": "cheddar",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "file-saver": "^2.0.2",
