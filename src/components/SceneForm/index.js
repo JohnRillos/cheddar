@@ -6,14 +6,16 @@ import {
   // ErrorMessage, 
   FieldArray
 } from 'formik';
+import LocalStorage from 'local-storage';
 import FormActionHandler from '../../modules/FormActionHandler';
 import SimpleButton from '../SimpleButton';
+import ErrorBanner from '../ErrorBanner';
 import './styles.css';
 import { saveFile } from '../../modules/FileHandler';
 
 const buildField = (displayName, fieldName, isTextArea) => (
   <div className="namedField">
-    <text>{`${displayName}: `}</text>
+    <div>{`${displayName}: `}</div>
     <Field className="field" name={fieldName} component={isTextArea ? 'textarea' : 'input'} />
   </div>
 )
@@ -46,23 +48,37 @@ const buildChoiceArray = () => (
   />
 )
 
-class FrameForm extends Component {
+class SceneForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialValues: {
-
-      }
+      currentSceneId: this.props.sceneId,
+      initialValues: {},
+      loaded: false,
+      error: undefined,
     };
   }
 
   componentDidMount() {
-    return FormActionHandler.loadScene()
-      .then(initialValues => this.setState({ initialValues }))
+    try {
+      const scene = FormActionHandler.loadScene(this.state.currentSceneId);
+      console.log('scene', scene);
+      return this.setState({
+        currentSceneId: scene.id,
+        initialValues: scene,
+        loaded: true
+      });
+    } catch (error) {
+      return this.setState({ error })
+    }
   }
 
   render() {
-    if (!this.state.initialValues.topText) {
+    if (this.state.error) {
+      // console.log(this.state.error);
+      return <ErrorBanner message={this.state.error.message} />
+    }
+    if (!this.state.loaded) {
       return null;
     }
     return <div className='formContainer'>
@@ -114,4 +130,4 @@ class FrameForm extends Component {
   }
 }
 
-export default FrameForm;
+export default SceneForm;
