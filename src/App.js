@@ -1,6 +1,7 @@
 import React from 'react';
+import ls from 'local-storage';
 import './App.css';
-import FrameForm from './components/FrameForm';
+import SceneForm from './components/SceneForm';
 // import TopNavBar from './components/TopNavBar';
 import Footer from './components/Footer';
 
@@ -12,7 +13,9 @@ function App() {
         <h1 className="App-h1">Cheddar</h1>
         <p className="App-p">Choose Your Own Adventure Editor</p>
       </header>
-      <FrameForm />
+      <SceneForm 
+        sceneId={ls.get("currentSceneId")}
+      />
       <Footer/>
     </div>
   );

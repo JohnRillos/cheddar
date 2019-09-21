@@ -1,20 +1,36 @@
 const LocalStorage = require('local-storage');
 const demo = require('../dev/demo.json');
 
-function submitSceneForm(formInput) {
-  LocalStorage.set('formInput', formInput);
-  console.log('localStorage formInput', LocalStorage.get('formInput'));
+function submitSceneForm(sceneFormInput) {
+  console.log('sceneFormInput', sceneFormInput);
+  const currentSceneId = sceneFormInput.id;
+  const localScenes = LocalStorage.get('scenes');
+  const updatedScenes = {
+    ...localScenes,
+    [currentSceneId]: sceneFormInput
+  }
+  LocalStorage.set('scenes', updatedScenes);
 
-  console.log('values', JSON.stringify(formInput, null, 2));
-  alert(`Submitted scene "${formInput.sceneName}"`);
+  alert(`Submitted scene "${sceneFormInput.sceneName}"`);
+}
+
+function getScene(sceneId) {
+  const localScenes = LocalStorage.get('scenes');
+  console.log('scenes:', localScenes);
+  console.log('sceneId', sceneId);
+  if (!sceneId) {
+    return demo.scenes['0'];
+  }
+  if (localScenes && localScenes[sceneId]) {
+    return localScenes[sceneId];
+  }
+  throw new Error(`Scene '${sceneId}' not found!`);
 }
 
 function loadScene(sceneId) {
-  const localScene = LocalStorage.get('formInput');
-  if (localScene) {
-    return Promise.resolve(localScene);
-  }
-  return Promise.resolve(demo.scenes[0]);
+  const scene = getScene(sceneId);
+  LocalStorage.set("currentSceneId", scene.id);
+  return scene;
 }
 
-module.exports = { submitSceneForm, loadScene };
+export default { submitSceneForm, getScene, loadScene };
