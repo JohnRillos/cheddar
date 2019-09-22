@@ -1,13 +1,26 @@
 import FileSaver from 'file-saver';
 import LocalStorage from 'local-storage';
+import { version } from '../../package.json';
 
-function getBlob(localItemName) {
-  const jsonString = JSON.stringify(LocalStorage.get(localItemName), null, 2);
-  return new Blob([jsonString], { type: "text/plain;charset=utf-8" });
+function getLocalStorageItems(itemNames = []) {
+  const localStorageMap = {};
+  itemNames.forEach(name => localStorageMap[name] = LocalStorage.get(name));
+  return localStorageMap;
 }
 
-function saveFile(fileName) {
-  FileSaver.saveAs(getBlob('scenes'), fileName);
+function toBlob(json) {
+  return new Blob([JSON.stringify(json, null, 2)], { type: "text/plain;charset=utf-8" })
 }
 
-export { saveFile }
+function getExportBlob() {
+  return toBlob({
+    editorVersion: version,
+    ...getLocalStorageItems(['currentSceneId', 'bookmarkedScenes', 'scenes'])
+  });
+}
+
+function exportProject() {
+  FileSaver.saveAs(getExportBlob(), "cheddar-project.json");
+}
+
+export { exportProject }
