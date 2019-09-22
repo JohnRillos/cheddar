@@ -11,7 +11,7 @@ import FormActionHandler from '../../modules/FormActionHandler';
 import SimpleButton from '../SimpleButton';
 import ErrorBanner from '../ErrorBanner';
 import './styles.css';
-import { saveFile } from '../../modules/FileHandler';
+import { exportProject } from '../../modules/FileHandler';
 
 const buildField = (displayName, fieldName, isTextArea) => (
   <div className="namedField">
@@ -119,7 +119,7 @@ class SceneForm extends Component {
               <SimpleButton styles="big" type="submit" disabled={isSubmitting} text="Submit" />
               <SimpleButton
                 styles="big"
-                onClick={() => saveFile("cyoa.json", "formInput")}
+                onClick={exportProject}
                 text="Export"
               />
             </div>
