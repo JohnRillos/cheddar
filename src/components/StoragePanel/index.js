@@ -4,11 +4,6 @@ import ls from 'local-storage';
 import { exportProject } from '../../modules/FileHandler';
 
 class StoragePanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   renderButton = (label, action, style) => (
     <button
       type="button"
