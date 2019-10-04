@@ -1,14 +1,7 @@
 .formContainer {
   text-align: center;
-  /* background-color: #282c34; */
-  /* min-height: 100vh; */
   display: flex;
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* display: flex; */
   flex-basis: content;
-  /* max-width: 30rem; */
 
   color: white;
 
@@ -31,26 +24,18 @@
 }
 
 .field {
-  /* font-size: 1rem; */
   margin: 4px;
   border: hidden;
-  /* border-color: white; */
-  /* background: transparent; */
   padding: 2px;
 }
 
 .namedField {
   display: flex;
   flex-direction: row;
-  /* flex-basis: auto; */
-  /* align-content: space-between; */
   justify-content: space-between;
-  /* align-items: right; */
-  /* font-size: 1rem; */
 }
 
 .column {
-  /* margin-top: 1rem; */
   margin: 0;
   margin-left: 8px;
   margin-bottom: 8px;
@@ -74,6 +59,11 @@
   justify-content: space-between;
   padding: 4px;
   margin-bottom: 4px;
+}
+
+.sectionHeaderLabel {
+  margin-right: 8px;
+  font-style: italic;
 }
 
 .choice {

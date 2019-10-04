@@ -1,13 +1,13 @@
 {
   "editorVersion": null,
-  "currentSceneId": "0",
-  "bookmarkedScenes": [
-    "0"
+  "bookmarkedSceneIds": [
+    "start",
+    "end"
   ],
   "scenes": {
-    "0": {
-      "id": "0",
-      "sceneName": "New Scene",
+    "start": {
+      "id": "start",
+      "sceneName": "The Start",
       "topText": "foo",
       "imageFile": "meme-image",
       "bottomText": "bar",
@@ -25,6 +25,14 @@
           "nextScene": "scene-c"
         }
       ]
+    },
+    "end": {
+      "id": "end",
+      "sceneName": "The End",
+      "topText": "The",
+      "imageFile": "game-over",
+      "bottomText": "End",
+      "choices": []
     }
   }
 }
