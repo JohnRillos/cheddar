@@ -10,7 +10,6 @@ import FormActionHandler from '../../modules/FormActionHandler';
 import SimpleButton from '../SimpleButton';
 import ErrorBanner from '../ErrorBanner';
 import './styles.css';
-import { exportProject } from '../../modules/FileHandler';
 
 const buildField = (displayName, fieldName, isTextArea) => (
   <div className="namedField">
@@ -88,14 +87,16 @@ class SceneForm extends Component {
         //     return errors;
         //   }}
         enableReinitialize
-        onSubmit={(values, { setSubmitting }) => {
+        initialStatus={{ savedValues: this.props.initialValues }}
+        onSubmit={(values, { setSubmitting, setStatus }) => {
           setTimeout(() => {
             FormActionHandler.submitSceneForm(values);
             setSubmitting(false);
+            setStatus({ savedValues: values });
           }, 400);
         }}
       >
-        {({ isSubmitting }) => (
+        {(props) => (
           <Form className="form">
             <div className="fieldSections">
               <div className="column">
@@ -109,8 +110,12 @@ class SceneForm extends Component {
               </div>
             </div>
             <div className="row-right">
-              <SimpleButton styles="big" type="submit" disabled={isSubmitting} text="Submit" />
-              <SimpleButton styles="big" onClick={exportProject} text="Export" />
+              <SimpleButton
+                styles="big"
+                type="submit"
+                disabled={props.isSubmitting || (props.status.savedValues === props.values)}
+                text="Save Scene"
+              />
             </div>
           </Form>
         )}

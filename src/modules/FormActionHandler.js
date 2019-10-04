@@ -9,13 +9,12 @@ function submitSceneForm(sceneFormInput) {
     [currentSceneId]: sceneFormInput
   }
   LocalStorage.set('scenes', updatedScenes);
-
-  alert(`Submitted scene "${sceneFormInput.sceneName}"`);
+  console.info(`Submitted scene "${sceneFormInput.sceneName}"`);
 }
 
-function getScene(sceneId) {
+function getScene(sceneId = 'start') {
   const localScenes = LocalStorage.get('scenes');
-  if (!sceneId) {
+  if (!localScenes) {
     LocalStorage.set('scenes', demo.scenes);
     return demo.scenes['start'];
   }
