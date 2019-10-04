@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import BookmarksPanel from './components/BookmarksPanel';
+import StoragePanel from './components/StoragePanel';
 import SceneForm from './components/SceneForm';
 import Footer from './components/Footer';
 import FormActionHandler from './modules/FormActionHandler';
@@ -35,6 +36,9 @@ class App extends Component {
           <SceneForm
             initialValues={FormActionHandler.getScene(this.state.currentSceneId)}
           />
+          <div className="right-panel">
+            <StoragePanel/>
+          </div>
         </div>
         <Footer />
       </div>
