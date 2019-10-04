@@ -15,7 +15,7 @@ function toBlob(json) {
 function getExportBlob() {
   return toBlob({
     editorVersion: version,
-    ...getLocalStorageItems(['currentSceneId', 'bookmarkedScenes', 'scenes'])
+    ...getLocalStorageItems(['bookmarkedSceneIds', 'scenes'])
   });
 }
 

@@ -1,0 +1,48 @@
+@import 'src/variables.scss';
+
+.panel {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-basis: content;
+  max-width: 10rem;
+
+  color: white;
+
+  border: solid;
+  border-radius: 0.5rem;
+  border-color: white;
+  margin: 0 0 1rem 0;
+  overflow: hidden;
+  background-color: white;
+
+}
+
+.title {
+  padding: 8px;
+  font-weight: bold;
+  color: black;
+  font-style: italic;
+}
+
+.scene {
+  padding: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: hidden;
+  border-top: solid;
+  border-width: 1px;
+  flex-basis: auto;
+  vertical-align: center;
+  font-family: $main-font;
+
+  color: white;
+  outline: none;
+
+  background-color: $dark-bg;
+}
+
+.scene:hover {
+  background-color: $highlight;
+  transition-duration: 0.5s;
+}
