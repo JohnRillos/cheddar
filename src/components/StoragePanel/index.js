@@ -6,9 +6,7 @@ import { exportProject } from '../../modules/FileHandler';
 class StoragePanel extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      bookmarkedScenes: []
-    };
+    this.state = {};
   }
 
   renderButton = (label, action, style) => (
