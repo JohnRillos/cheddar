@@ -26,7 +26,7 @@ class BookmarksPanel extends Component {
   renderBookmark = (scene) => (
     <button
       type="button"
-      className="scene"
+      className="control-button"
       onClick={() => this.props.changeScene(scene.id)}
       key={scene.sceneName}
     >
