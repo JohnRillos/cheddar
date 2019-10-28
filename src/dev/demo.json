@@ -2,7 +2,8 @@
   "editorVersion": null,
   "bookmarkedSceneIds": [
     "start",
-    "end"
+    "end",
+    "scene-a"
   ],
   "scenes": {
     "start": {
@@ -14,15 +15,32 @@
       "choices": [
         {
           "text": "foo",
-          "nextScene": "scene-a"
+          "nextScene": "start"
         },
         {
           "text": "bar",
-          "nextScene": "scene-b"
+          "nextScene": "end"
         },
         {
           "text": "baz",
-          "nextScene": "scene-c"
+          "nextScene": "scene-a"
+        }
+      ]
+    },
+    "scene-a": {
+      "id": "scene-a",
+      "sceneName": "Test Scene",
+      "topText": "foo",
+      "imageFile": "meme-image",
+      "bottomText": "bar",
+      "choices": [
+        {
+          "text": "foo",
+          "nextScene": "start"
+        },
+        {
+          "text": "bar",
+          "nextScene": "end"
         }
       ]
     },

@@ -26,6 +26,7 @@
 }
 
 .control-button {
+  width: 100%;
   margin: 0;
   padding: 8px;
   padding-top: 4px;
@@ -50,4 +51,8 @@
 
 .danger:hover {
   background-color: $error;
+}
+
+.disabled-hover:hover {
+  background-color: gray;
 }
