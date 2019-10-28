@@ -1,1 +1,15 @@
 @import 'src/variables.scss';
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button-row > .control-button {
+  border-right: solid;
+}
+
+.button-row > .control-button:last-child {
+  border-right: hidden;
+}
