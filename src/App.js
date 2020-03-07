@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import BookmarksPanel from './components/BookmarksPanel';
 import StoragePanel from './components/StoragePanel';
+import NextScenesPanel from './components/NextScenesPanel';
 import SceneForm from './components/SceneForm';
 import Footer from './components/Footer';
-import FormActionHandler from './modules/FormActionHandler';
+import SceneHelper from './modules/SceneHelper';
 import Bookmarker from './modules/Bookmarker';
 
 class App extends Component {
@@ -12,19 +13,23 @@ class App extends Component {
     super(props);
     this.state = {
       currentSceneId: undefined,
-      bookmarkedScenes: []
+      bookmarkedScenes: [],
+      currentScene: {},
     }
   }
 
   changeScene(nextSceneId) {
+    console.log('change scene: ' + nextSceneId);
     return this.setState({
       currentSceneId: nextSceneId,
+      currentScene: SceneHelper.getScene(nextSceneId),
     });
   }
 
   componentDidMount() {
     return this.setState({
-      bookmarkedScenes: Bookmarker.getBookmarkedScenes()
+      currentScene: SceneHelper.getScene(this.state.currentSceneId),
+      bookmarkedScenes: Bookmarker.getBookmarkedScenes(),
     });
   }
 
@@ -34,7 +39,16 @@ class App extends Component {
     });
   }
 
+  refresh() {
+    console.log('refreshing');
+    this.refreshBookmarks();
+    this.setState({
+      currentScene: SceneHelper.getScene(this.state.currentSceneId),
+    })
+  }
+
   render() {
+    console.log('currentScene', this.state.currentScene);
     return (
       <div className="App">
         <header className="App-header">
@@ -58,10 +72,15 @@ class App extends Component {
             />
           </div>
           <SceneForm
-            initialValues={FormActionHandler.getScene(this.state.currentSceneId)}
+            initialValues={this.state.currentScene}
+            onFormSubmit={() => this.refresh()}
           />
           <div className="right-panel">
-            <StoragePanel/>
+            <StoragePanel />
+            <NextScenesPanel 
+              currentScene={this.state.currentScene}
+              changeScene={(id) => this.changeScene(id)}
+            />
           </div>
         </div>
         <Footer />

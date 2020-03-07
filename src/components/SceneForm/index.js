@@ -22,6 +22,7 @@ const buildChoice = (arrayHelpers, index, arrayName) => (
   <div className="choice" key={index}>
     <div className="choiceHeader">
       {`Choice ${index + 1}: `}
+      {/* <div>hello</div> */}
       <SimpleButton styles="red" onClick={() => arrayHelpers.remove(index)} text="-" />
     </div>
     {buildField("Text", `${arrayName}.${index}.text`, true)}
@@ -45,6 +46,23 @@ const buildChoiceArray = () => (
     )}
   />
 )
+
+// const buildNextSceneSelector = () => (
+//   <FieldArray
+//     name="choices"
+//     render={arrayHelpers => (
+//       <div>
+//         <div className="choicesSectionHeader">
+//           <div className="sectionHeaderLabel">Choices</div>
+//           <SimpleButton onClick={() => arrayHelpers.push({ text: '', nextScene: '' })} text="+" />
+//         </div>
+//         {(arrayHelpers.form.values.choices || []).map((field, index) => (
+//           buildChoice(arrayHelpers, index, "choices")
+//         ))}
+//       </div>
+//     )}
+//   />
+// )
 
 class SceneForm extends Component {
   constructor(props) {
@@ -93,6 +111,7 @@ class SceneForm extends Component {
             FormActionHandler.submitSceneForm(values);
             setSubmitting(false);
             setStatus({ savedValues: values });
+            this.props.onFormSubmit();
           }, 400);
         }}
       >
@@ -109,12 +128,13 @@ class SceneForm extends Component {
                 {buildChoiceArray()}
               </div>
             </div>
-            <div className="row-right">
+            <div className="bottom-row">
               <SimpleButton
                 styles="big"
                 type="submit"
                 disabled={props.isSubmitting || (props.status.savedValues === props.values)}
                 text="Save Scene"
+                // onClick={() => this.props.onFormSubmit()}
               />
             </div>
           </Form>

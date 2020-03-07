@@ -53,6 +53,10 @@
   background-color: $error;
 }
 
+.warning:hover {
+  background-color: $warning;
+}
+
 .disabled-hover:hover {
   background-color: gray;
 }
